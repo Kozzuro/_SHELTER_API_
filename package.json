@@ -1,0 +1,26 @@
+{
+  "name": "_shelter_api_",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://Kozzuro@github.com/Kozzuro/_SHELTER_API_.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kozzuro/_SHELTER_API_/issues"
+  },
+  "homepage": "https://github.com/Kozzuro/_SHELTER_API_#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
