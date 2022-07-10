@@ -5,4 +5,4 @@ SHELTER API
 - npm i express
 
 # run
-npm run dev
+- npm run dev
