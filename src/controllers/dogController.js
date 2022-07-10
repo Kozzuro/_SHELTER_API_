@@ -11,8 +11,27 @@ const getOneDog = (req, res) => {
 };
 
 const createNewDog = (req, res) => {
-  const createdDog = dogService.createNewDog();
-  res.send("Create a new dog");
+  const { body } = req;
+  if (
+    !body.name ||
+    !body.breed ||
+    !body.age ||
+    !body.images ||
+    !body.description ||
+    !body.characteristic
+  ) {
+    return;
+  }
+  const newDog = {
+    name: body.name,
+    breed: body.breed,
+    age: body.age,
+    images: body.images,
+    description: body.description,
+    characteristic: body.characteristic,
+  };
+  const createdDog = dogService.createNewDog(newDog);
+  res.status(201).send({ status: "OK", data: createdDog });
 };
 
 const updateOneDog = (req, res) => {

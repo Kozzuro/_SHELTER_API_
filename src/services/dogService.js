@@ -1,7 +1,8 @@
-const Dogs = require("../database/Dog");
+const Dog = require("../database/dog");
+const { v4: uuid } = require("uuid");
 
 const getAllDogs = () => {
-  const allDogs = Dogs.getAllDogs();
+  const allDogs = Dog.getAllDogs();
   return allDogs;
 };
 
@@ -9,8 +10,15 @@ const getOneDog = () => {
   return;
 };
 
-const createNewDog = () => {
-  return;
+const createNewDog = (newDog) => {
+  const dogToInsert = {
+    ...newDog,
+    id: uuid(),
+    createdAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
+    updatedAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
+  };
+  const createdDog = Dog.createNewDog(dogToInsert);
+  return createdDog;
 };
 
 const updateOneDog = () => {

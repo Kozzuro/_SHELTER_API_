@@ -20,6 +20,27 @@
       ],
       "createdAt": "4/20/2022, 2:21:56 PM",
       "updatedAt": "4/20/2022, 2:21:56 PM"
+    },
+    {
+      "name": "kot",
+      "breed": "For Time",
+      "age": "0",
+      "images": [
+        "images/image_1.jpg",
+        "images/image_2.jpg",
+        "images/image_3.jpg"
+      ],
+      "description": "Lorem ipsum dolor sit amet",
+      "characteristic": [
+        "characteristic_1",
+        "characteristic_2",
+        "characteristic_3",
+        "characteristic_4",
+        "characteristic_5"
+      ],
+      "id": "96da5c19-bc46-4bb4-9381-60feb1a09508",
+      "createdAt": "7/10/2022, 5:44:32 PM",
+      "updatedAt": "7/10/2022, 5:44:32 PM"
     }
   ]
 }
