@@ -1,7 +1,5 @@
-const DB = require("./db.json");
 const connect = require("./db");
 const Dog = require("./models/dogModel");
-const { saveToDatabase } = require("./utils");
 
 async function getAllDogs() {
   try {
@@ -12,11 +10,22 @@ async function getAllDogs() {
   }
 }
 
-const createNewDog = (newDog) => {
-  console.log(newDog);
-  DB.dogs.push(newDog);
-  saveToDatabase(DB);
-  return newDog;
+async function getOneDog(dogId) {
+  try {
+    let dbData = await Dog.find({id: dogId});
+    return dbData;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
-module.exports = { getAllDogs, createNewDog };
+async function createNewDog(newDog) {
+  try {
+    let dbData = await Dog.create(newDog);
+    return dbData;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+module.exports = { getAllDogs, createNewDog, getOneDog };

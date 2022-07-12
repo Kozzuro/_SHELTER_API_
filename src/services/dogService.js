@@ -6,20 +6,21 @@ async function getAllDogs() {
   return allDogs;
 }
 
-const getOneDog = () => {
-  return;
+async function getOneDog(dogId) {
+  const dog = await Dog.getOneDog(dogId);
+  return dog;
 };
 
-const createNewDog = (newDog) => {
+async function createNewDog(newDog) {
   const dogToInsert = {
     ...newDog,
     id: uuid(),
     createdAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
     updatedAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
   };
-  const createdDog = Dog.createNewDog(dogToInsert);
+  const createdDog = await Dog.createNewDog(dogToInsert);
   return createdDog;
-};
+}
 
 const updateOneDog = () => {
   return;

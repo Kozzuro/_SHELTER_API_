@@ -2,16 +2,26 @@ const dogService = require("../services/dogService");
 
 async function getAllDogs(req, res) {
   const allDogs = await dogService.getAllDogs();
-  console.log(allDogs)
   res.send({ status: "OK", data: allDogs });
 }
 
-const getOneDog = (req, res) => {
-  const dog = dogService.getOneDog();
-  res.send("Get an existing dog");
-};
+async function getOneDog(req, res) {
+  const {
+    params: { dogId },
+  } = req;
+  if (!dogId) {
+    return;
+  }
+  const dog = await dogService.getOneDog(dogId);
+  res.send({ status: "OK", data: dog });
+}
 
-const createNewDog = (req, res) => {
+// const getOneDog = (req, res) => {
+//   const dog = dogService.getOneDog();
+//   res.send("Get an existing dog");
+// };
+
+async function createNewDog(req, res) {
   const { body } = req;
   if (
     !body.name ||
@@ -31,9 +41,9 @@ const createNewDog = (req, res) => {
     description: body.description,
     characteristic: body.characteristic,
   };
-  const createdDog = dogService.createNewDog(newDog);
+  const createdDog = await dogService.createNewDog(newDog);
   res.status(201).send({ status: "OK", data: createdDog });
-};
+}
 
 const updateOneDog = (req, res) => {
   const updatedDog = dogService.updateOneDog();
