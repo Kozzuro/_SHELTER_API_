@@ -1,9 +1,10 @@
 const dogService = require("../services/dogService");
 
-const getAllDogs = (req, res) => {
-  const allDogs = dogService.getAllDogs();
+async function getAllDogs(req, res) {
+  const allDogs = await dogService.getAllDogs();
+  console.log(allDogs)
   res.send({ status: "OK", data: allDogs });
-};
+}
 
 const getOneDog = (req, res) => {
   const dog = dogService.getOneDog();

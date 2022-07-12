@@ -1,15 +1,18 @@
 const DB = require("./db.json");
+const connect = require("./db");
+const Dog = require("./models/dogModel");
 const { saveToDatabase } = require("./utils");
 
-const getAllDogs = () => {
-  return DB.dogs;
-};
+async function getAllDogs() {
+  try {
+    let dbData = await Dog.find({});
+    return dbData;
+  } catch (err) {
+    console.log(err);
+  }
+}
 
 const createNewDog = (newDog) => {
-//   const isAlreadyAdded = DB.dogs.findIndex((dog) => dog.name === dog.name) > -1;
-//   if (isAlreadyAdded) {
-//     return;
-//   }
   console.log(newDog);
   DB.dogs.push(newDog);
   saveToDatabase(DB);

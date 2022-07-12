@@ -1,10 +1,10 @@
 const Dog = require("../database/dog");
 const { v4: uuid } = require("uuid");
 
-const getAllDogs = () => {
-  const allDogs = Dog.getAllDogs();
+async function getAllDogs() {
+  const allDogs = await Dog.getAllDogs();
   return allDogs;
-};
+}
 
 const getOneDog = () => {
   return;
