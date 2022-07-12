@@ -28,6 +28,19 @@ async function createNewDog(newDog) {
   }
 }
 
+async function updateOneDog(dogId, changes) {
+  const updatedDog = {
+    ...changes,
+    updatedAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
+  };
+  try {
+    let dbData = await Dog.updateOne({ id: dogId }, updatedDog);
+    return dbData;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 async function deleteOneWorkout(dogId) {
   try {
     let dbData = await Dog.deleteOne({ id: dogId });
@@ -37,4 +50,4 @@ async function deleteOneWorkout(dogId) {
   }
 }
 
-module.exports = { getAllDogs, createNewDog, getOneDog, deleteOneWorkout };
+module.exports = { getAllDogs, createNewDog, getOneDog, updateOneDog, deleteOneWorkout };

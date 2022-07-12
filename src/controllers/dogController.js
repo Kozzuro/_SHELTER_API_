@@ -40,10 +40,17 @@ async function createNewDog(req, res) {
   res.status(201).send({ status: "OK", data: createdDog });
 }
 
-const updateOneDog = (req, res) => {
-  const updatedDog = dogService.updateOneDog();
-  res.send("Update an existing dog");
-};
+async function updateOneDog(req, res) {
+  const {
+    body,
+    params: { dogId },
+  } = req;
+  if (!dogId) {
+    return;
+  }
+  const updatedDog = await dogService.updateOneDog(dogId, body);
+  res.send({ status: "OK", data: updatedDog });
+}
 
 async function deleteOneDog(req, res) {
   const {
@@ -54,7 +61,7 @@ async function deleteOneDog(req, res) {
   }
   await dogService.deleteOneDog(dogId);
   res.status(204).send({ status: "OK" });
-};
+}
 
 module.exports = {
   getAllDogs,

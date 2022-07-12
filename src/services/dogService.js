@@ -22,8 +22,9 @@ async function createNewDog(newDog) {
   return createdDog;
 }
 
-const updateOneDog = () => {
-  return;
+async function updateOneDog(dogId, changes) {
+  const updatedDog = await Dog.updateOneDog(dogId, changes);
+  return updatedDog;
 };
 
 async function deleteOneDog(dogId) {
