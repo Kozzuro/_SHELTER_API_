@@ -12,12 +12,12 @@ async function getAllDogs() {
 
 async function getOneDog(dogId) {
   try {
-    let dbData = await Dog.find({id: dogId});
+    let dbData = await Dog.find({ id: dogId });
     return dbData;
   } catch (err) {
     console.log(err);
   }
-};
+}
 
 async function createNewDog(newDog) {
   try {
@@ -28,4 +28,13 @@ async function createNewDog(newDog) {
   }
 }
 
-module.exports = { getAllDogs, createNewDog, getOneDog };
+async function deleteOneWorkout(dogId) {
+  try {
+    let dbData = await Dog.deleteOne({ id: dogId });
+    return dbData;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+module.exports = { getAllDogs, createNewDog, getOneDog, deleteOneWorkout };

@@ -16,11 +16,6 @@ async function getOneDog(req, res) {
   res.send({ status: "OK", data: dog });
 }
 
-// const getOneDog = (req, res) => {
-//   const dog = dogService.getOneDog();
-//   res.send("Get an existing dog");
-// };
-
 async function createNewDog(req, res) {
   const { body } = req;
   if (
@@ -50,9 +45,15 @@ const updateOneDog = (req, res) => {
   res.send("Update an existing dog");
 };
 
-const deleteOneDog = (req, res) => {
-  dogService.deleteOneDog();
-  res.send("Delete an existing dog");
+async function deleteOneDog(req, res) {
+  const {
+    params: { dogId },
+  } = req;
+  if (!dogId) {
+    return;
+  }
+  await dogService.deleteOneDog(dogId);
+  res.status(204).send({ status: "OK" });
 };
 
 module.exports = {

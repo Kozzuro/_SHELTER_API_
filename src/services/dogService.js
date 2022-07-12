@@ -26,8 +26,8 @@ const updateOneDog = () => {
   return;
 };
 
-const deleteOneDog = () => {
-  return;
+async function deleteOneDog(dogId) {
+  await Dog.deleteOneWorkout(dogId);
 };
 
 module.exports = {
