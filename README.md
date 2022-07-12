@@ -1,8 +1,7 @@
 SHELTER API
 
 # install dependencies
-- npm i -D nodemon
-- npm i express
+- npm install
 
 # run
 - npm run dev
