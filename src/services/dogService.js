@@ -1,9 +1,12 @@
-const Dog = require("../database/dog");
+// const Dog = require("../database/dog");
+const db = require("../database/db");
 const { v4: uuid } = require("uuid");
 
 const getAllDogs = () => {
-  const allDogs = Dog.getAllDogs();
-  return allDogs;
+  const allDogs = db.find("dogs", {}, (err, res) => { return JSON.parse(JSON.stringify(res)); });
+  // return allDogs;
+  // // const allDogs = Dog.getAllDogs();
+  // // return allDogs;
 };
 
 const getOneDog = () => {

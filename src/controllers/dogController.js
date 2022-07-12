@@ -2,6 +2,7 @@ const dogService = require("../services/dogService");
 
 const getAllDogs = (req, res) => {
   const allDogs = dogService.getAllDogs();
+  console.log(allDogs)
   res.send({ status: "OK", data: allDogs });
 };
 
