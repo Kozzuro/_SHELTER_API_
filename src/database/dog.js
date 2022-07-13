@@ -15,7 +15,7 @@ async function getOneDog(dogId) {
     let dbData = await Dog.find({ id: dogId }, "-_id -__v");
     return dbData;
   } catch (err) {
-    console.log(err);
+    return { status: 404, message: err.message };
   }
 }
 
@@ -24,8 +24,7 @@ async function createNewDog(newDog) {
     let dbData = await Dog.create(newDog);
     return dbData;
   } catch (err) {
-    console.log(err);
-    return { status: 404, message: err.message };
+    return { status: 400, message: err.message };
   }
 }
 
@@ -38,7 +37,7 @@ async function updateOneDog(dogId, changes) {
     let dbData = await Dog.updateOne({ id: dogId }, updatedDog);
     return dbData;
   } catch (err) {
-    console.log(err);
+    return { status: 400, message: err.message };
   }
 }
 
@@ -47,7 +46,7 @@ async function deleteOneWorkout(dogId) {
     let dbData = await Dog.deleteOne({ id: dogId });
     return dbData;
   } catch (err) {
-    console.log(err);
+    return { status: 400, message: err.message };
   }
 }
 
