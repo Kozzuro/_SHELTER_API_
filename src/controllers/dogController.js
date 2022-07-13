@@ -18,16 +18,6 @@ async function getOneDog(req, res) {
 
 async function createNewDog(req, res) {
   const { body } = req;
-  if (
-    !body.name ||
-    !body.breed ||
-    !body.birth ||
-    !body.images ||
-    !body.description ||
-    !body.characteristic
-  ) {
-    return;
-  }
   const newDog = {
     name: body.name,
     breed: body.breed,
@@ -37,7 +27,11 @@ async function createNewDog(req, res) {
     characteristic: body.characteristic,
   };
   const createdDog = await dogService.createNewDog(newDog);
-  res.status(201).send({ status: "OK", data: createdDog });
+  if(!createdDog.hasOwnProperty('error')){
+    res.status(201).send({ status: 201, data: createdDog });
+  }else{
+    res.status(createdDog.status).send({ status: createdDog.status, data: createdDog.message });
+  }
 }
 
 async function updateOneDog(req, res) {
