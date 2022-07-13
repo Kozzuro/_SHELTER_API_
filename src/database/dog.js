@@ -3,7 +3,7 @@ const Dog = require("./models/dogModel");
 
 async function getAllDogs() {
   try {
-    let dbData = await Dog.find({});
+    let dbData = await Dog.find({}, '-_id -__v');
     return dbData;
   } catch (err) {
     console.log(err);
@@ -12,7 +12,7 @@ async function getAllDogs() {
 
 async function getOneDog(dogId) {
   try {
-    let dbData = await Dog.find({ id: dogId });
+    let dbData = await Dog.find({ id: dogId }, '-_id -__v');
     return dbData;
   } catch (err) {
     console.log(err);
