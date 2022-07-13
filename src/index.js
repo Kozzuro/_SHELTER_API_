@@ -1,5 +1,6 @@
 const express = require("express"); 
 const bodyParser = require("body-parser");
+const { swaggerDocs: V1SwaggerDocs } = require("./v1/swagger");
 
 const v1DogRouter = require("./v1/routes/dogRoutes");
 
@@ -11,4 +12,5 @@ app.use("/api/v1/dogs", v1DogRouter);
 
 app.listen(PORT, () => { 
     console.log(`API is listening on port ${PORT}`); 
+    V1SwaggerDocs(app, PORT);
 });
