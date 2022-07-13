@@ -3,7 +3,7 @@ const DogsSchema = mongoose.Schema({
   id: { type: String, required: true },
   name: { type: String, required: true },
   breed: { type: String, required: true },
-  age: { type: String, required: true },
+  birth: { type: String, required: true },
   images: { type: Array, required: true },
   description: { type: String, required: true },
   characteristic: { type: Array, required: true },

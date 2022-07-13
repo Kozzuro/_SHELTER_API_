@@ -21,7 +21,7 @@ async function createNewDog(req, res) {
   if (
     !body.name ||
     !body.breed ||
-    !body.age ||
+    !body.birth ||
     !body.images ||
     !body.description ||
     !body.characteristic
@@ -31,7 +31,7 @@ async function createNewDog(req, res) {
   const newDog = {
     name: body.name,
     breed: body.breed,
-    age: body.age,
+    birth: body.birth,
     images: body.images,
     description: body.description,
     characteristic: body.characteristic,
