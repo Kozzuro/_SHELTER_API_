@@ -84,6 +84,74 @@ router.get("/", dogController.getAllDogs);
  */
 router.get("/:dogId", dogController.getOneDog);
 
+/**
+ * @openapi
+ * /api/v1/dogs/:
+ *   post:
+ *     summary: Creates new dog
+ *     requestBody:
+ *       description: Optional description in *Markdown*
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - name
+ *               - breed
+ *               - birth
+ *               - images
+ *               - description
+ *               - characteristic
+ *             properties:
+ *               name:
+ *                 type: string
+ *               breed:
+ *                 type: string
+ *               birth:
+ *                 type: string
+ *               microchip:
+ *                 type: string
+ *               images:
+ *                 type: array
+ *                 items:                          
+ *                   example: image_1.jpg
+ *               description:
+ *                 type: string
+ *               characteristic:
+ *                 type: array
+ *                 items:                         
+ *                   example: example_characteristic
+ *     tags:
+ *       - Dogs
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *              type: object
+ *              properties:
+ *                   status:
+ *                     type: string
+ *                     example: 200
+ *                   message:
+ *                     type: string 
+ *                     example: Updated!
+ *       400:
+ *          description: Bad Request
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                   status:
+ *                     type: string
+ *                     example: 404
+ *                   message:
+ *                     type: string 
+ *                     example: Could not create, given id does not exists!
+ */
 router.post("/", dogController.createNewDog);
 
 router.patch("/:dogId", dogController.updateOneDog);
