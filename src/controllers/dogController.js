@@ -3,7 +3,7 @@ const dogService = require("../services/dogService");
 async function getAllDogs(req, res) {
   const allDogs = await dogService.getAllDogs();
   if (allDogs === undefined || allDogs.length == 0) {
-    res.status(404).send({ status: 404, message: "No record!" });
+    res.status(404).send({ status: 404, message: "No records, check database!" });
   } else {
     res.status(200).send({ status: "OK", data: allDogs });
   }
@@ -20,7 +20,7 @@ async function getOneDog(req, res) {
   if (dog === undefined || dog.length == 0) {
     res
       .status(404)
-      .send({ status: 404, message: "Dog on given id does not exists!" });
+      .send({ status: 404, message: "Given id does not exists!" });
   } else {
     res.status(200).send({ status: 200, data: dog });
   }
@@ -61,7 +61,7 @@ async function updateOneDog(req, res) {
       .status(404)
       .send({
         status: 404,
-        message: "Could not update dog, given id does not exists!",
+        message: "Could not update, given id does not exists!",
       });
   } else {
     const updatedDog = await dogService.updateOneDog(dogId, body);
@@ -88,11 +88,11 @@ async function deleteOneDog(req, res) {
       .status(404)
       .send({
         status: 404,
-        message: "Could not delete dog, given id does not exists!",
+        message: "Could not delete, given id does not exists!",
       });
   } else {
     await dogService.deleteOneDog(dogId);
-    res.status(200).send({ status: 200, message: "Dog deleted!" });
+    res.status(200).send({ status: 200, message: "Deleted!" });
   }
 }
 

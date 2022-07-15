@@ -154,6 +154,79 @@ router.get("/:dogId", dogController.getOneDog);
  */
 router.post("/", dogController.createNewDog);
 
+/**
+ * @openapi
+ * /api/v1/dogs/{dogId}:
+ *   patch:
+ *     summary: Update a dog
+ *     parameters:
+ *      - name: dogId
+ *        in: path
+ *        required: true
+ *        description: ID of dog
+ *     requestBody:
+ *       description: Optional description in *Markdown*
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - name
+ *               - breed
+ *               - birth
+ *               - images
+ *               - description
+ *               - characteristic
+ *             properties:
+ *               name:
+ *                 type: string
+ *               breed:
+ *                 type: string
+ *               birth:
+ *                 type: string
+ *               microchip:
+ *                 type: string
+ *               images:
+ *                 type: array
+ *                 items:                          
+ *                   example: image_1.jpg
+ *               description:
+ *                 type: string
+ *               characteristic:
+ *                 type: array
+ *                 items:                         
+ *                   example: example_characteristic
+ *     tags:
+ *       - Dogs
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *              type: object
+ *              properties:
+ *                   status:
+ *                     type: string
+ *                     example: 200
+ *                   message:
+ *                     type: string 
+ *                     example: Updated!
+ *       404:
+ *          description: NOT FOUND
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                   status:
+ *                     type: string
+ *                     example: 404
+ *                   message:
+ *                     type: string 
+ *                     example: Could not create, given id does not exists!
+ */
 router.patch("/:dogId", dogController.updateOneDog);
 
 /**
