@@ -7,17 +7,16 @@ const options = {
     info: { title: "SHELTER API", version: "1.0.0" },
     components: {
       securitySchemes: {
-        jwt: {
-          type: "application/json",
+        bearerAuth: {
+          type: "http",
           scheme: "bearer",
-          in: "header",
           bearerFormat: "JWT",
         },
       },
     },
     security: [
       {
-        jwt: [],
+        bearerAuth: [],
       },
     ],
   },

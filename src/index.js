@@ -27,7 +27,7 @@ const checkJwt = jwt({
 
 // app.use(checkJwt);
 app.use(bodyParser.json());
-app.use("/api/v1/dogs", v1DogRouter, checkJwt);
+app.use("/api/v1/dogs", checkJwt, v1DogRouter);
 
 app.listen(PORT, () => {
   console.log(`API is listening on port ${PORT}`);
