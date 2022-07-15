@@ -7,6 +7,8 @@ const router = express.Router();
  * @openapi
  * /api/v1/dogs:
  *   get:
+ *     security:
+ *     - bearerAuth: []
  *     summary: Returns a list of dogs
  *     tags:
  *       - Dogs

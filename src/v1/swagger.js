@@ -5,6 +5,21 @@ const options = {
   definition: {
     openapi: "3.0.0",
     info: { title: "SHELTER API", version: "1.0.0" },
+    components: {
+      securitySchemes: {
+        jwt: {
+          type: "application/json",
+          scheme: "bearer",
+          in: "header",
+          bearerFormat: "JWT",
+        },
+      },
+    },
+    security: [
+      {
+        jwt: [],
+      },
+    ],
   },
   apis: ["./src/v1/routes/dogRoutes.js", "./src/database/dog.js"],
 };

@@ -25,9 +25,9 @@ const checkJwt = jwt({
   algorithms: ["RS256"],
 });
 
-app.use(checkJwt);
+// app.use(checkJwt);
 app.use(bodyParser.json());
-app.use("/api/v1/dogs", v1DogRouter);
+app.use("/api/v1/dogs", v1DogRouter, checkJwt);
 
 app.listen(PORT, () => {
   console.log(`API is listening on port ${PORT}`);
