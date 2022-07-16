@@ -6,6 +6,11 @@ async function getAllDogs() {
   return allDogs;
 }
 
+async function getDogsPagination(page, limit) {
+  const dogPagintaion = await Dog.getDogsPagination(page, limit);
+  return dogPagintaion;
+}
+
 async function getOneDog(dogId) {
   const dog = await Dog.getOneDog(dogId);
   return dog;
@@ -33,6 +38,7 @@ async function deleteOneDog(dogId) {
 
 module.exports = {
   getAllDogs,
+  getDogsPagination,
   getOneDog,
   createNewDog,
   updateOneDog,

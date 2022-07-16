@@ -3,10 +3,23 @@ const dogService = require("../services/dogService");
 async function getAllDogs(req, res) {
   const allDogs = await dogService.getAllDogs();
   if (allDogs === undefined || allDogs.length == 0) {
-    res.status(404).send({ status: 404, message: "No records, check database!" });
+    res
+      .status(404)
+      .send({ status: 404, message: "No records, check database!" });
   } else {
     res.status(200).send({ status: "OK", data: allDogs });
   }
+}
+
+async function getDogsPagination(req, res) {
+  const {
+    params: { page, limit },
+  } = req;
+  if (!page && !limit) {
+    return;
+  }
+  const dogPagintaion = await dogService.getDogsPagination(page, limit);
+  res.status(200).send({ status: 200, data: dogPagintaion });
 }
 
 async function getOneDog(req, res) {
@@ -18,9 +31,7 @@ async function getOneDog(req, res) {
   }
   const dog = await dogService.getOneDog(dogId);
   if (dog === undefined || dog.length == 0) {
-    res
-      .status(404)
-      .send({ status: 404, message: "Given id does not exists!" });
+    res.status(404).send({ status: 404, message: "Given id does not exists!" });
   } else {
     res.status(200).send({ status: 200, data: dog });
   }
@@ -58,12 +69,10 @@ async function updateOneDog(req, res) {
   }
   const dog = await dogService.getOneDog(dogId);
   if (dog === undefined || dog.length == 0) {
-    res
-      .status(404)
-      .send({
-        status: 404,
-        message: "Could not update, given id does not exists!",
-      });
+    res.status(404).send({
+      status: 404,
+      message: "Could not update, given id does not exists!",
+    });
   } else {
     const updatedDog = await dogService.updateOneDog(dogId, body);
     if (!updatedDog.hasOwnProperty("message")) {
@@ -85,12 +94,10 @@ async function deleteOneDog(req, res) {
   }
   const dog = await dogService.getOneDog(dogId);
   if (dog === undefined || dog.length == 0) {
-    res
-      .status(404)
-      .send({
-        status: 404,
-        message: "Could not delete, given id does not exists!",
-      });
+    res.status(404).send({
+      status: 404,
+      message: "Could not delete, given id does not exists!",
+    });
   } else {
     await dogService.deleteOneDog(dogId);
     res.status(200).send({ status: 200, message: "Deleted!" });
@@ -100,6 +107,7 @@ async function deleteOneDog(req, res) {
 module.exports = {
   getAllDogs,
   getOneDog,
+  getDogsPagination,
   createNewDog,
   updateOneDog,
   deleteOneDog,

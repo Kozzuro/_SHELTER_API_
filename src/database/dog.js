@@ -10,6 +10,15 @@ async function getAllDogs() {
   }
 }
 
+async function getDogsPagination(page, limit) {
+  try {
+    let dbData = await Dog.paginate({}, {page:page, limit:limit, customLabels: { docs: 'data' }}, "-_id -__v");
+    return dbData;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 async function getOneDog(dogId) {
   try {
     let dbData = await Dog.find({ id: dogId }, "-_id -__v");
@@ -52,6 +61,7 @@ async function deleteOneWorkout(dogId) {
 
 module.exports = {
   getAllDogs,
+  getDogsPagination,
   createNewDog,
   getOneDog,
   updateOneDog,
