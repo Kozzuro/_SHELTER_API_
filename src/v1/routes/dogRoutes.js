@@ -27,6 +27,19 @@ const router = express.Router();
  *                   type: array 
  *                   items: 
  *                     type: object
+ *       401:
+ *         description: UNAUTHORIZED
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: 401
+ *                 message:
+ *                    type: string 
+ *                    example: Unauthorized!
  *       404:
  *         description: NOT FOUND
  *         content:
@@ -47,6 +60,8 @@ router.get("/", dogController.getAllDogs);
  * @openapi
  * /api/v1/dogs/{dogId}:
  *   get:
+ *     security:
+ *       - bearerAuth: []
  *     summary: Returns a dog of given id
  *     parameters:
  *      - name: dogId
@@ -70,6 +85,19 @@ router.get("/", dogController.getAllDogs);
  *                   type: array 
  *                   items: 
  *                     type: object
+ *       401:
+ *         description: UNAUTHORIZED
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: 401
+ *                 message:
+ *                    type: string 
+ *                    example: Unauthorized!
  *       404:
  *          description: NOT FOUND
  *          content:
@@ -90,6 +118,8 @@ router.get("/:dogId", dogController.getOneDog);
  * @openapi
  * /api/v1/dogs/:
  *   post:
+ *     security:
+ *       - bearerAuth: []
  *     summary: Creates new dog
  *     requestBody:
  *       description: Optional description in *Markdown*
@@ -127,8 +157,8 @@ router.get("/:dogId", dogController.getOneDog);
  *     tags:
  *       - Dogs
  *     responses:
- *       200:
- *         description: OK
+ *       201:
+ *         description: CREATED
  *         content:
  *           application/json:
  *             schema:
@@ -136,10 +166,23 @@ router.get("/:dogId", dogController.getOneDog);
  *              properties:
  *                   status:
  *                     type: string
- *                     example: 200
+ *                     example: 201
  *                   message:
  *                     type: string 
- *                     example: Updated!
+ *                     example: Created!
+ *       401:
+ *         description: UNAUTHORIZED
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: 401
+ *                 message:
+ *                    type: string 
+ *                    example: Unauthorized!
  *       400:
  *          description: Bad Request
  *          content:
@@ -152,7 +195,7 @@ router.get("/:dogId", dogController.getOneDog);
  *                     example: 404
  *                   message:
  *                     type: string 
- *                     example: Could not create, given id does not exists!
+ *                     example: Bad Request!
  */
 router.post("/", dogController.createNewDog);
 
@@ -160,6 +203,8 @@ router.post("/", dogController.createNewDog);
  * @openapi
  * /api/v1/dogs/{dogId}:
  *   patch:
+ *     security:
+ *       - bearerAuth: []
  *     summary: Update a dog
  *     parameters:
  *      - name: dogId
@@ -215,6 +260,19 @@ router.post("/", dogController.createNewDog);
  *                   message:
  *                     type: string 
  *                     example: Updated!
+*       401:
+ *         description: UNAUTHORIZED
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: 401
+ *                 message:
+ *                    type: string 
+ *                    example: Unauthorized!
  *       404:
  *          description: NOT FOUND
  *          content:
@@ -235,6 +293,8 @@ router.patch("/:dogId", dogController.updateOneDog);
  * @openapi
  * /api/v1/dogs/{dogId}:
  *   delete:
+ *     security:
+ *       - bearerAuth: []
  *     summary: Delete a dog of given id
  *     parameters:
  *      - name: dogId
@@ -257,6 +317,19 @@ router.patch("/:dogId", dogController.updateOneDog);
  *                   message:
  *                     type: string 
  *                     example: Dog deleted!
+*       401:
+ *         description: UNAUTHORIZED
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: 401
+ *                 message:
+ *                    type: string 
+ *                    example: Unauthorized!
  *       404:
  *          description: NOT FOUND
  *          content:

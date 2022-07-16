@@ -29,6 +29,12 @@ const checkJwt = jwt({
 app.use(bodyParser.json());
 app.use("/api/v1/dogs", checkJwt, v1DogRouter);
 
+app.use(function (err, req, res, next) {
+  if (err.name === "UnauthorizedError") {
+    res.status(401).send({ status: 401, message: "Unauthorized!" });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`API is listening on port ${PORT}`);
   V1SwaggerDocs(app, PORT);
