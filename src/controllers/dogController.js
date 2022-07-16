@@ -32,6 +32,7 @@ async function createNewDog(req, res) {
     name: body.name,
     breed: body.breed,
     birth: body.birth,
+    alive: body.alive,
     microchip: body.microchip,
     images: body.images,
     description: body.description,

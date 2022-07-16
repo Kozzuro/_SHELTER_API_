@@ -131,6 +131,7 @@ router.get("/:dogId", dogController.getOneDog);
  *               - name
  *               - breed
  *               - birth
+ *               - alive
  *               - images
  *               - description
  *               - characteristic
@@ -141,6 +142,8 @@ router.get("/:dogId", dogController.getOneDog);
  *                 type: string
  *               birth:
  *                 type: string
+ *               alive:
+ *                 type: boolean
  *               microchip:
  *                 type: string
  *               images:
@@ -221,6 +224,7 @@ router.post("/", dogController.createNewDog);
  *               - name
  *               - breed
  *               - birth
+ *               - alvie
  *               - images
  *               - description
  *               - characteristic
@@ -231,6 +235,8 @@ router.post("/", dogController.createNewDog);
  *                 type: string
  *               birth:
  *                 type: string
+ *               alive:
+ *                 type: boolean
  *               microchip:
  *                 type: string
  *               images:

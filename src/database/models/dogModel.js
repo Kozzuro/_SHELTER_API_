@@ -4,6 +4,7 @@ const DogsSchema = mongoose.Schema({
   name: { type: String, required: true },
   breed: { type: String, required: true },
   birth: { type: String, required: true },
+  alive: { type: String, required: true },
   microchip: { type: String, required: false },
   images: { type: Array, required: true },
   description: { type: String, required: true },
