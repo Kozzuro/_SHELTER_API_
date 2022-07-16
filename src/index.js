@@ -5,9 +5,12 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const jwksRsa = require("jwks-rsa");
 const { expressjwt: jwt } = require('express-jwt');
+const apicache = require("apicache");
 const { swaggerDocs: V1SwaggerDocs } = require("./v1/swagger");
 
 const v1DogRouter = require("./v1/routes/dogRoutes");
+
+const cache = apicache.middleware;
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -27,6 +30,7 @@ const checkJwt = jwt({
 
 // app.use(checkJwt);
 app.use(bodyParser.json());
+app.use(cache('50 minutes'))
 app.use("/api/v1/dogs", checkJwt, v1DogRouter);
 
 app.use(function (err, req, res, next) {
