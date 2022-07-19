@@ -28,6 +28,7 @@ const checkJwt = jwt({
   algorithms: ["RS256"],
 });
 
+app.use(cors());
 // app.use(checkJwt);
 app.use(bodyParser.json());
 // app.use(cache('50 minutes'))
