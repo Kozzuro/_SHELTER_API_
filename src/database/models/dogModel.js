@@ -6,7 +6,7 @@ const DogsSchema = mongoose.Schema({
   birth: { type: String, required: true },
   alive: { type: String, required: true },
   microchip: { type: String, required: false },
-  images: { type: Array, required: true },
+  images: { type: Array, required: false },
   description: { type: String, required: true },
   characteristic: { type: Array, required: true },
   createdAt: { type: String, required: true },
