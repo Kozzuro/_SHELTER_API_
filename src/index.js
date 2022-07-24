@@ -29,6 +29,7 @@ const checkJwt = jwt({
 });
 
 // app.use(checkJwt);
+app.use(cors);
 app.use(bodyParser.json());
 app.use(cache('50 minutes'))
 app.use("/api/v1/dogs", checkJwt, v1DogRouter);
