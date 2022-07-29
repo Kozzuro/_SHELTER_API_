@@ -55,6 +55,8 @@ const router = express.Router();
  */
 router.get("/", dogController.getAllDogs);
 
+router.get("/:page/:limit", dogController.getDogsPagination);
+
 /**
  * @openapi
  * /api/v1/dogs/{dogId}:

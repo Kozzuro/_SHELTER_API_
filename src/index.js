@@ -28,6 +28,7 @@ const checkJwt = jwt({
   algorithms: ["RS256"],
 });
 
+app.use(cors());
 // app.use(checkJwt);
 app.use(cors({
   credentials: true,
