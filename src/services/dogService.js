@@ -33,7 +33,7 @@ async function updateOneDog(dogId, changes) {
 };
 
 async function deleteOneDog(dogId) {
-  await Dog.deleteOneWorkout(dogId);
+  await Dog.deleteOneDog(dogId);
 };
 
 module.exports = {

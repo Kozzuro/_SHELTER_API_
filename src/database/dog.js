@@ -50,7 +50,7 @@ async function updateOneDog(dogId, changes) {
   }
 }
 
-async function deleteOneWorkout(dogId) {
+async function deleteOneDog(dogId) {
   try {
     let dbData = await Dog.deleteOne({ id: dogId });
     return dbData;
@@ -65,5 +65,5 @@ module.exports = {
   createNewDog,
   getOneDog,
   updateOneDog,
-  deleteOneWorkout,
+  deleteOneDog,
 };

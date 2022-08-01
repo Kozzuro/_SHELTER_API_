@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const mongoosePaginate = require('mongoose-paginate-v2');
-const DogsSchema = mongoose.Schema({
+const AnimalsSchema = mongoose.Schema({
   id: { type: String, required: true },
   name: { type: String, required: true },
   breed: { type: String, required: true },
@@ -14,6 +14,6 @@ const DogsSchema = mongoose.Schema({
   updatedAt: { type: String, required: true },
 });
 
-DogsSchema.plugin(mongoosePaginate);
+AnimalsSchema.plugin(mongoosePaginate);
 
-module.exports = mongoose.model("dogs", DogsSchema);
+module.exports = mongoose.model("Animals", AnimalsSchema);

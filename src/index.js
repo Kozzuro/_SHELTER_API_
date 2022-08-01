@@ -9,6 +9,8 @@ const apicache = require("apicache");
 const { swaggerDocs: V1SwaggerDocs } = require("./v1/swagger");
 
 const v1DogRouter = require("./v1/routes/dogRoutes");
+const v1CatRouter = require("./v1/routes/catRoutes");
+const v1AnimalRouter = require("./v1/routes/animalRoutes");
 
 const cache = apicache.middleware;
 
@@ -37,6 +39,8 @@ app.use(cors({
 app.use(bodyParser.json());
 // app.use(cache('50 minutes'))
 app.use("/api/v1/dogs", checkJwt, v1DogRouter);
+app.use("/api/v1/cats", checkJwt, v1CatRouter);
+app.use("/api/v1/animals", checkJwt, v1AnimalRouter);
 
 app.use(function (err, req, res, next) {
   if (err.name === "UnauthorizedError") {
